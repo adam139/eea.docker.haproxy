@@ -1,6 +1,9 @@
 FROM haproxy:1.8.22
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
+ && sed -i "s@http://security.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
+
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     ca-certificates \
